@@ -16,7 +16,9 @@
         .divInicio > .drpDownProvincia {
         width: 140px;
         }
-
+        .divInicio > .drpDownLocalidad {
+          width: 140px;
+        }  
     </style>
 </head>
 <body>
@@ -24,8 +26,11 @@
             <asp:Label ID="lblDestinoInicio" Text="Destino Inicio" runat="server" style="text-decoration: underline; text-transform: uppercase; font-size: large"/>
         <div id="divDestinoInicio" class="divInicio">
             <asp:Label ID="lblProvincia" Text="Provincia:" runat="server" />
-            <asp:DropDownList runat="server" ID="drpDownLstProvincia" CssClass="drpDownProvincia">
-
+            <asp:DropDownList runat="server" ID="drpDownLstProvincia" CssClass="drpDownProvincia" AutoPostBack="True">
+            </asp:DropDownList>
+            
+            <asp:Label ID="lblLocalidad" Text="Localidad:" runat="server" />
+            <asp:DropDownList runat="server" ID="ddlLocalidad" CssClass="drpDownLocalidad">
             </asp:DropDownList>
         </div>
     </form>
