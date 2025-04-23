@@ -1,0 +1,33 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Ejercicio01.aspx.cs" Inherits="TP4_Grupo_11.Ejercicio01" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Ejercicio 1</title>
+    <style>
+        .divInicio {
+        display: flex;
+        gap: 10px;
+        padding-top: 10px;
+        text-transform: uppercase; 
+        }
+        .divInicio > .drpDownProvincia {
+        width: 140px;
+        }
+
+    </style>
+</head>
+<body>
+    <form id="formularioEj01" runat="server">
+            <asp:Label ID="lblDestinoInicio" Text="Destino Inicio" runat="server" style="text-decoration: underline; text-transform: uppercase; font-size: large"/>
+        <div id="divDestinoInicio" class="divInicio">
+            <asp:Label ID="lblProvincia" Text="Provincia:" runat="server" />
+            <asp:DropDownList runat="server" ID="drpDownLstProvincia" CssClass="drpDownProvincia">
+
+            </asp:DropDownList>
+        </div>
+    </form>
+</body>
+</html>
