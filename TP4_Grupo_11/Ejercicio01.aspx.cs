@@ -32,63 +32,31 @@ namespace TP4_Grupo_11
                 drpDownLstProvincia.DataValueField = "IdProvincia";
                 drpDownLstProvincia.DataBind();
 
-
+                drpDownLstProvincia.Items.Insert(0, new ListItem("-- Seleccionar --", ""));
 
                 sqlDataReader.Close();
 
-
-
-                // Siempre actualizar localidades según provincia seleccionada
-                string provinciaSelec = drpDownLstProvincia.SelectedValue;
-
-                SqlCommand sqlB = new SqlCommand("SELECT * FROM Localidades WHERE IdProvincia = @IdProvincia", connection);
-                sqlB.Parameters.AddWithValue("@IdProvincia", provinciaSelec);
-
-                SqlDataReader reader = sqlB.ExecuteReader();
-
-                ddlLocalidad.DataSource = reader;
-                ddlLocalidad.DataTextField = "NombreLocalidad";
-                ddlLocalidad.DataValueField = "IdLocalidad";
-                ddlLocalidad.DataBind();
-                reader.Close();
-
-
-                // PROVINCIA FINAL SIN LA PROVINCIA SELECCIONADA EN LA PROVINCIA INICIAL
-
-
-                SqlCommand sqlCommandProvF = new SqlCommand("SELECT * FROM Provincias WHERE IdProvincia != @IdProvincia", connection);
-                sqlCommandProvF.Parameters.AddWithValue("@IdProvincia", provinciaSelec);
-                SqlDataReader sqlDataReaderProvF = sqlCommandProvF.ExecuteReader();
-                dpProvinciaFinal.DataSource = sqlDataReaderProvF;
-                dpProvinciaFinal.DataTextField = "NombreProvincia";
-                dpProvinciaFinal.DataValueField = "IdProvincia";
-                dpProvinciaFinal.DataBind();
-                sqlDataReaderProvF.Close();
-
-
-                dpProvinciaFinal.Items.Insert(0, new ListItem("-- Seleccionar --", ""));
-
-                connection.Close();
-
-
             }
-            
 
-   
-
-        }
-
-        // ACA SE ACTUALIZA EN TIEMPO REAL 
-        protected void drpDownLstProvincia_SelectedIndexChanged(object sender, EventArgs e)
-        {
+            // Siempre actualizar localidades según provincia seleccionada
             string provinciaSelec = drpDownLstProvincia.SelectedValue;
 
+            SqlCommand sqlB = new SqlCommand("SELECT * FROM Localidades WHERE IdProvincia = @IdProvincia", connection);
+            sqlB.Parameters.AddWithValue("@IdProvincia", provinciaSelec);
 
-            SqlConnection connection = new SqlConnection(cadenaConexion);
-            connection.Open();
+            SqlDataReader reader = sqlB.ExecuteReader();
 
-            
-            
+            ddlLocalidad.DataSource = reader;
+            ddlLocalidad.DataTextField = "NombreLocalidad";
+            ddlLocalidad.DataValueField = "IdLocalidad";
+            ddlLocalidad.DataBind();
+            reader.Close();
+
+            ddlLocalidad.Items.Insert(0, new ListItem("-- Seleccionar --", ""));
+
+
+            // PROVINCIA FINAL SIN LA PROVINCIA SELECCIONADA EN LA PROVINCIA INICIAL
+
 
             SqlCommand sqlCommandProvF = new SqlCommand("SELECT * FROM Provincias WHERE IdProvincia != @IdProvincia", connection);
             sqlCommandProvF.Parameters.AddWithValue("@IdProvincia", provinciaSelec);
@@ -99,12 +67,14 @@ namespace TP4_Grupo_11
             dpProvinciaFinal.DataBind();
             sqlDataReaderProvF.Close();
 
-            dpProvinciaFinal.Items.Insert(0, new ListItem("-- Seleccionar --", ""));
-            dpProvinciaFinal.SelectedIndex = 0;
 
+            dpProvinciaFinal.Items.Insert(0, new ListItem("-- Seleccionar --", ""));
 
             connection.Close();
+
+
         }
+
 
 
 

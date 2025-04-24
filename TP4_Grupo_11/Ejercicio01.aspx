@@ -26,11 +26,11 @@
             <asp:Label ID="lblDestinoInicio" Text="Destino Inicio" runat="server" style="text-decoration: underline; text-transform: uppercase; font-size: large"/>
         <div id="divDestinoInicio" class="divInicio">
             <asp:Label ID="lblProvincia" Text="Provincia:" runat="server" />
-            <asp:DropDownList runat="server" ID="drpDownLstProvincia" CssClass="drpDownProvincia" AutoPostBack="True" OnSelectedIndexChanged="drpDownLstProvincia_SelectedIndexChanged">
+            <asp:DropDownList runat="server" ID="drpDownLstProvincia" CssClass="drpDownProvincia" AutoPostBack="True">
             </asp:DropDownList>
             
             <asp:Label ID="lblLocalidad" Text="Localidad:" runat="server" />
-            <asp:DropDownList runat="server" ID="ddlLocalidad" CssClass="drpDownLocalidad">
+            <asp:DropDownList runat="server" ID="ddlLocalidad" CssClass="drpDownLocalidad"  >
             </asp:DropDownList>
             <br />
         </div>
@@ -39,7 +39,7 @@
             <br />
             <br />
             <asp:Label ID="Label2" runat="server" Text="PROVINCIA: "></asp:Label>
-            <asp:DropDownList ID="dpProvinciaFinal" runat="server" AutoPostBack="True" >
+            <asp:DropDownList ID="dpProvinciaFinal" runat="server" >
             </asp:DropDownList>
             <br />
             <br />
