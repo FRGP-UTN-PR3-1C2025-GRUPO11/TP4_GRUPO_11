@@ -71,12 +71,6 @@ namespace TP4_Grupo_11
             dpProvinciaFinal.Items.Insert(0, new ListItem("-- Seleccionar --", ""));
 
             connection.Close();
-
-
         }
-
-
-
-
     }
 }
