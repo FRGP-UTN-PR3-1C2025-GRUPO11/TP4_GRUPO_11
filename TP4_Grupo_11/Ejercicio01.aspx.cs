@@ -56,7 +56,7 @@ namespace TP4_Grupo_11
             // PROVINCIA FINAL SIN LA PROVINCIA SELECCIONADA EN LA PROVINCIA INICIAL
 
             SqlCommand sqlCommandProvF = new SqlCommand("SELECT * FROM Provincias WHERE IdProvincia != @IdProvincia", connection);
-            sqlCommandProvF.Parameters.AddWithValue("@IdProvincia", provinciaSelec);
+            sqlCommandProvF.Parameters.AddWithValue("@IdProvincia", Prov);
             SqlDataReader sqlDataReaderProvF = sqlCommandProvF.ExecuteReader();
             dpProvinciaFinal.DataSource = sqlDataReaderProvF;
             dpProvinciaFinal.DataTextField = "NombreProvincia";
@@ -88,9 +88,5 @@ namespace TP4_Grupo_11
 
             connection.Close();
         }
-
-
-
-
     }
 }
