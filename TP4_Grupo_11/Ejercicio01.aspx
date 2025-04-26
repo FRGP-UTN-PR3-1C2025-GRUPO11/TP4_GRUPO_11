@@ -19,11 +19,19 @@
         .divInicio > .drpDownLocalidad {
           width: 140px;
         }  
+        .divFinal {
+        display: flex;
+        gap: 10px;
+        padding-top: 10px;
+        text-transform: uppercase; 
+        }
     </style>
 </head>
 <body>
     <form id="formularioEj01" runat="server">
-            <asp:Label ID="lblDestinoInicio" Text="Destino Inicio" runat="server" style="text-decoration: underline; text-transform: uppercase; font-size: large"/>
+        
+        <asp:Label ID="lblDestinoInicio" Text="Destino Inicio" runat="server" style="text-decoration: underline; text-transform: uppercase; font-size: large"/>
+        
         <div id="divDestinoInicio" class="divInicio">
             <asp:Label ID="lblProvincia" Text="Provincia:" runat="server" />
             <asp:DropDownList runat="server" ID="drpDownLstProvincia" CssClass="drpDownProvincia" AutoPostBack="True">
@@ -34,17 +42,21 @@
             </asp:DropDownList>
             <br />
         </div>
-            <asp:Label ID="Label1" runat="server" Font-Underline="True" Text="DESTINO FINAL"></asp:Label>
-            <br />
-            <br />
-            <br />
-            <asp:Label ID="Label2" runat="server" Text="PROVINCIA: "></asp:Label>
-            <asp:DropDownList ID="dpProvinciaFinal" runat="server" >
+
+        <asp:Label ID="lblDestinoFinal" Text="Destino Final" runat="server" style="text-decoration: underline; text-transform: uppercase; font-size: large"/>
+
+
+        <div id="divDestinoFinal" class="divFinal">
+            <asp:Label ID="lblProvinciaFinal" runat="server" Text="Provincia: "></asp:Label>
+            <asp:DropDownList ID="dpProvinciaFinal" runat="server"  CssClass="drpDownProvincia" >
             </asp:DropDownList>
-            <br />
-            <br />
-            <br />
-            <br />
+
+
+            <asp:Label ID="lblLocalidadFinal" runat="server" Text="Localidad: "></asp:Label>
+            <asp:DropDownList ID="ddlLocalidadFinal" runat="server" CssClass="drpDownLocalidad">
+            </asp:DropDownList>
+        </div>
+
     </form>
 </body>
 </html>

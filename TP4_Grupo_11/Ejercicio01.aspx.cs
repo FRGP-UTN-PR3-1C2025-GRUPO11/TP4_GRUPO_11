@@ -12,7 +12,7 @@ namespace TP4_Grupo_11
     public partial class Ejercicio01 : System.Web.UI.Page
     {
 
-        private const string cadenaConexion = "Data Source=DESKTOP-6LDIHKB\\SQLEXPRESS;Initial Catalog=Viajes;Integrated Security=True;TrustServerCertificate=True";
+        private const string cadenaConexion = @"Data Source=localhost\SQLEXPRESS;Initial Catalog=Viajes;Integrated Security=True;TrustServerCertificate=True";
         protected void Page_Load(object sender, EventArgs e)
         {
             SqlConnection connection = new SqlConnection(cadenaConexion);
@@ -31,12 +31,10 @@ namespace TP4_Grupo_11
                 drpDownLstProvincia.DataTextField = "NombreProvincia";
                 drpDownLstProvincia.DataValueField = "IdProvincia";
                 drpDownLstProvincia.DataBind();
-
                 drpDownLstProvincia.Items.Insert(0, new ListItem("-- Seleccionar --", ""));
-
                 sqlDataReader.Close();
-
             }
+
 
             // Siempre actualizar localidades según provincia seleccionada
             string provinciaSelec = drpDownLstProvincia.SelectedValue;
@@ -57,7 +55,6 @@ namespace TP4_Grupo_11
 
             // PROVINCIA FINAL SIN LA PROVINCIA SELECCIONADA EN LA PROVINCIA INICIAL
 
-
             SqlCommand sqlCommandProvF = new SqlCommand("SELECT * FROM Provincias WHERE IdProvincia != @IdProvincia", connection);
             sqlCommandProvF.Parameters.AddWithValue("@IdProvincia", provinciaSelec);
             SqlDataReader sqlDataReaderProvF = sqlCommandProvF.ExecuteReader();
@@ -70,9 +67,26 @@ namespace TP4_Grupo_11
 
             dpProvinciaFinal.Items.Insert(0, new ListItem("-- Seleccionar --", ""));
 
+            // LOCALIDAD FINAL SEGUN LA PROVINCIA FINAL SELECCIONADA
+
+            string provinciaFinalSelec = dpProvinciaFinal.SelectedValue;
+
+            SqlCommand sqlCommandLocF = new SqlCommand("SELECT * FROM Localidades ", connection); // TODO: clausula WHERE de acuerdo a la provincia destino
+
+            //// Siempre actualizar localidades según provincia seleccionada
+            sqlCommandLocF.Parameters.AddWithValue("@IdProvincia", provinciaFinalSelec);
+
+            SqlDataReader readerLocF = sqlCommandLocF.ExecuteReader();
+
+            ddlLocalidadFinal.DataSource = readerLocF;
+            ddlLocalidadFinal.DataTextField = "NombreLocalidad";
+            ddlLocalidadFinal.DataValueField = "IdLocalidad";
+            ddlLocalidadFinal.DataBind();
+            ddlLocalidadFinal.Items.Insert(0, new ListItem("-- Seleccionar --", ""));
+            readerLocF.Close();
+
+
             connection.Close();
-
-
         }
 
 

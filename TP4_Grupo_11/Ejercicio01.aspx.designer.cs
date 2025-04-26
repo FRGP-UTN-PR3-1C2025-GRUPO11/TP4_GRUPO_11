@@ -69,22 +69,22 @@ namespace TP4_Grupo_11
         protected global::System.Web.UI.WebControls.DropDownList ddlLocalidad;
 
         /// <summary>
-        /// Control Label1.
+        /// Control lblDestinoFinal.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
+        protected global::System.Web.UI.WebControls.Label lblDestinoFinal;
 
         /// <summary>
-        /// Control Label2.
+        /// Control lblProvinciaFinal.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label2;
+        protected global::System.Web.UI.WebControls.Label lblProvinciaFinal;
 
         /// <summary>
         /// Control dpProvinciaFinal.
@@ -94,5 +94,23 @@ namespace TP4_Grupo_11
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList dpProvinciaFinal;
+
+        /// <summary>
+        /// Control lblLocalidadFinal.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblLocalidadFinal;
+
+        /// <summary>
+        /// Control ddlLocalidadFinal.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlLocalidadFinal;
     }
 }
