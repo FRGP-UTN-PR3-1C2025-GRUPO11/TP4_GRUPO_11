@@ -24,12 +24,30 @@ namespace TP4_Grupo_11
         protected global::System.Web.UI.HtmlControls.HtmlForm formularioEj02;
 
         /// <summary>
-        /// Control grdViewProductos.
+        /// Control lblProducto.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView grdViewProductos;
+        protected global::System.Web.UI.WebControls.Label lblProducto;
+
+        /// <summary>
+        /// Control ddlProducto.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlProducto;
+
+        /// <summary>
+        /// Control txtProducto.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtProducto;
     }
 }
