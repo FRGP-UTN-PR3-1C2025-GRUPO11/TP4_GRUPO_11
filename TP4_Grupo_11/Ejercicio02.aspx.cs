@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
@@ -14,7 +15,7 @@ namespace TP4_Grupo_11
     {
 
   
-      private const string cadenaConexion = "Data Source=DESKTOP-KQ7K053\\SQLEXPRESS;Initial Catalog = Neptuno; Integrated Security = True; Encrypt=True;TrustServerCertificate=True";
+      private const string cadenaConexion = "Data Source=DESKTOP-B0567DV\\SQLEXPRESS;Initial Catalog=Neptuno;Integrated Security=True;TrustServerCertificate=True";
       protected void Page_Load(object sender, EventArgs e)
       {
             if (!IsPostBack)
@@ -33,26 +34,37 @@ namespace TP4_Grupo_11
                 ddlProducto.Items.Insert(1, new ListItem("-- Igual a: --", ""));
                 ddlProducto.Items.Insert(2, new ListItem("-- Mayor a: --", ""));
                 ddlProducto.Items.Insert(3, new ListItem("-- Mayo a: --", ""));
+                connection.Close();
             }
+
       }
 
         protected void btnFiltrar_Click(object sender, EventArgs e)
         {
-            
-                SqlConnection connection = new SqlConnection(cadenaConexion);
+            string connectionString = "Data Source=DESKTOP-B0567DV\\SQLEXPRESS;Initial Catalog=Neptuno;Integrated Security=True;TrustServerCertificate=True";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
                 connection.Open();
 
-                SqlCommand sqlCommand = new SqlCommand("SELECT IdProducto,NombreProducto,IdProveedor,IdCategoría,CantidadPorUnidad,PrecioUnidad FROM Productos", connection);
-                SqlDataReader reader = sqlCommand.ExecuteReader();
+                string query = "SELECT * FROM Productos WHERE IdCategoría = @id";
 
-                GVEj2.DataSource = reader;
-                GVEj2.DataBind();
-               //SqlParameter parameter = sqlCommand.Parameters.Add("@IdProducto", sqlDbType:int);
-               //parameter.Value = txtProducto.Text;
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@id", < 6); // Aquí puedes tomar el ID de un TextBox si quieres
 
-           
+                    SqlDataAdapter adapter = new SqlDataAdapter(command);
+                    DataTable table = new DataTable();
+                    adapter.Fill(table);
 
+                    // Aquí se hace el DataBind
+                    GVEj2.DataSource = table;
+                    GVEj2.DataBind();
+                }
+                connection.Close();
 
+            }
+            
         }
     }
 
