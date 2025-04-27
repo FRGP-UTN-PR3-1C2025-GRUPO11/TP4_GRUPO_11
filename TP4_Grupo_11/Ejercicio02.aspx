@@ -20,6 +20,14 @@
             </asp:DropDownList>
             <asp:TextBox ID="txtProducto" runat="server" style="margin-left: 15px" Width="101px"></asp:TextBox>
             <br />
+            <asp:Label ID="lblCategoria" runat="server" Text="Categoria:" style="text-transform: uppercase; font-size: large"></asp:Label>
+            <asp:DropDownList ID="ddlCategoria" runat="server" Height="22px" style="margin-left: 26px; margin-bottom: 0px; margin-top: 9px;" Width="110px">
+                <asp:ListItem Value="0">-- Seleccionar --</asp:ListItem>
+                <asp:ListItem Value="1">-- Igual a: --</asp:ListItem>
+                <asp:ListItem Value="2">-- Mayor a: --</asp:ListItem>
+                <asp:ListItem Value="3">-- Menor a: --</asp:ListItem>
+            </asp:DropDownList>
+            <asp:TextBox ID="txtCategoria" runat="server" style="margin-left: 22px; margin-top: 4px;"></asp:TextBox>
             <br />
             <asp:Button ID="btnFiltrar" runat="server" OnClick="btnFiltrar_Click" Text="Filtrar" />
         </div>
