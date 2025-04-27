@@ -14,7 +14,12 @@
             <asp:Label ID="lblProducto" runat="server" Text="IdProducto: " style="text-transform: uppercase; font-size: large"></asp:Label>
             <asp:DropDownList ID="ddlProducto" runat="server" style="margin-left: 7px"></asp:DropDownList>
             <asp:TextBox ID="txtProducto" runat="server" style="margin-left: 15px" Width="101px"></asp:TextBox>
+            <br />
+            <br />
+            <asp:Button ID="btnFiltrar" runat="server" OnClick="btnFiltrar_Click" Text="Filtrar" />
         </div>
+        <asp:GridView ID="GVEj2" runat="server">
+        </asp:GridView>
     </form>
 </body>
 </html>
