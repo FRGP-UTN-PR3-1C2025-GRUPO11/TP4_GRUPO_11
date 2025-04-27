@@ -43,26 +43,29 @@ namespace TP4_Grupo_11
         {
             string connectionString = "Data Source=DESKTOP-B0567DV\\SQLEXPRESS;Initial Catalog=Neptuno;Integrated Security=True;TrustServerCertificate=True";
 
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            if (ddlProducto.SelectedIndex==1)
             {
-                connection.Open();
-
-                string query = "SELECT * FROM Productos WHERE IdCategoría = @id";
-
-                using (SqlCommand command = new SqlCommand(query, connection))
+                using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    command.Parameters.AddWithValue("@id", < 6); // Aquí puedes tomar el ID de un TextBox si quieres
+                    connection.Open();
 
-                    SqlDataAdapter adapter = new SqlDataAdapter(command);
-                    DataTable table = new DataTable();
-                    adapter.Fill(table);
+                    string query = "SELECT * FROM Productos WHERE IdProducto = @id";
 
-                    // Aquí se hace el DataBind
-                    GVEj2.DataSource = table;
-                    GVEj2.DataBind();
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@id", 1); // Aquí puedes tomar el ID de un TextBox si quieres
+
+                        SqlDataAdapter adapter = new SqlDataAdapter(command);
+                        DataTable table = new DataTable();
+                        adapter.Fill(table);
+
+                        // Aquí se hace el DataBind
+                        GVEj2.DataSource = table;
+                        GVEj2.DataBind();
+                    }
+                    connection.Close();
+
                 }
-                connection.Close();
-
             }
             
         }
