@@ -51,6 +51,33 @@ namespace TP4_Grupo_11
         protected global::System.Web.UI.WebControls.TextBox txtProducto;
 
         /// <summary>
+        /// Control lblCantegoria.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblCantegoria;
+
+        /// <summary>
+        /// Control ddlCantegoria.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlCantegoria;
+
+        /// <summary>
+        /// Control txtCantegoria.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtCantegoria;
+
+        /// <summary>
         /// Control btnFiltrar.
         /// </summary>
         /// <remarks>
