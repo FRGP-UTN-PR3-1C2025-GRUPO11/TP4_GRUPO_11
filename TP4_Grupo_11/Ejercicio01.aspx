@@ -7,20 +7,20 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>Ejercicio 1</title>
     <style>
+        body, select { background-color: black; color: white; font-family:Arial, Helvetica, sans-serif; font-size:large}
+
         .divInicio {
-        display: flex;
-        gap: 10px;
+        display: grid;
+        grid-template-columns: 200px 200px;
+        gap: 15px;
         padding-top: 10px;
         text-transform: uppercase; 
+
         }
-        .divInicio > .drpDownProvincia {
-        width: 140px;
-        }
-        .divInicio > .drpDownLocalidad {
-          width: 140px;
-        }  
+
         .divFinal {
-        display: flex;
+        display: grid;
+        grid-template-columns: 200px 200px;
         gap: 10px;
         padding-top: 10px;
         text-transform: uppercase; 
@@ -34,26 +34,25 @@
         
         <div id="divDestinoInicio" class="divInicio">
             <asp:Label ID="lblProvincia" Text="Provincia:" runat="server" />
-            <asp:DropDownList runat="server" ID="drpDownLstProvincia" CssClass="drpDownProvincia" AutoPostBack="True">
+            <asp:DropDownList runat="server" ID="drpDownLstProvincia" CssClass="drpDownProvincia" AutoPostBack="True" OnSelectedIndexChanged="ddlProvinciaInicio_SelectedIndexChanged">
             </asp:DropDownList>
             
             <asp:Label ID="lblLocalidad" Text="Localidad:" runat="server" />
-            <asp:DropDownList runat="server" ID="ddlLocalidad" CssClass="drpDownLocalidad"  >
+            <asp:DropDownList runat="server" ID="ddlLocalidad" CssClass="drpDownLocalidad" AutoPostBack="True" OnSelectedIndexChanged="ddlLocalidadInicio_SelectedIndexChanged">
             </asp:DropDownList>
-            <br />
         </div>
-
+        <br />
         <asp:Label ID="lblDestinoFinal" Text="Destino Final" runat="server" style="text-decoration: underline; text-transform: uppercase; font-size: large"/>
 
 
         <div id="divDestinoFinal" class="divFinal">
             <asp:Label ID="lblProvinciaFinal" runat="server" Text="Provincia: "></asp:Label>
-            <asp:DropDownList ID="dpProvinciaFinal" runat="server"  CssClass="drpDownProvincia" >
+            <asp:DropDownList ID="dpProvinciaFinal" runat="server"  CssClass="drpDownProvincia" OnSelectedIndexChanged="ddlProvinciaFinal_SelectedIndexChanged" AutoPostBack="True" >
             </asp:DropDownList>
 
 
             <asp:Label ID="lblLocalidadFinal" runat="server" Text="Localidad: "></asp:Label>
-            <asp:DropDownList ID="ddlLocalidadFinal" runat="server" CssClass="drpDownLocalidad">
+            <asp:DropDownList ID="ddlLocalidadFinal" runat="server" CssClass="drpDownLocalidad" AutoPostBack="true" OnSelectedIndexChanged="ddlLocalidadDestinoIndexChanged">
             </asp:DropDownList>
         </div>
 
