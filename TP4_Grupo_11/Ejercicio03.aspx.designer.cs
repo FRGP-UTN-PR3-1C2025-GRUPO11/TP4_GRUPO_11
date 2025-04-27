@@ -11,7 +11,7 @@ namespace TP4_Grupo_11
 {
 
 
-    public partial class WebForm1
+    public partial class Ejercicio03
     {
 
         /// <summary>
@@ -42,12 +42,12 @@ namespace TP4_Grupo_11
         protected global::System.Web.UI.WebControls.DropDownList ddlTemas;
 
         /// <summary>
-        /// Control LBLibros.
+        /// Control lbTemas.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton LBLibros;
+        protected global::System.Web.UI.WebControls.LinkButton lbTemas;
     }
 }
