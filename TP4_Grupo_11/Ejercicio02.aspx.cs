@@ -29,11 +29,6 @@ namespace TP4_Grupo_11
                 GVEj2.DataSource = reader;
                 GVEj2.DataBind();
                 
-                //DROPDOWN LIST
-                ddlProducto.Items.Insert(0, new ListItem("-- Seleccionar --", ""));
-                ddlProducto.Items.Insert(1, new ListItem("-- Igual a: --", ""));
-                ddlProducto.Items.Insert(2, new ListItem("-- Mayor a: --", ""));
-                ddlProducto.Items.Insert(3, new ListItem("-- Mayo a: --", ""));
                 connection.Close();
             }
 
@@ -42,8 +37,8 @@ namespace TP4_Grupo_11
         protected void btnFiltrar_Click(object sender, EventArgs e)
         {
             string connectionString = "Data Source=DESKTOP-B0567DV\\SQLEXPRESS;Initial Catalog=Neptuno;Integrated Security=True;TrustServerCertificate=True";
-
-            if (ddlProducto.SelectedIndex==1)
+            string valorSeleccionado = ddlProducto.SelectedValue;
+            if (valorSeleccionado == "1")
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
@@ -53,7 +48,7 @@ namespace TP4_Grupo_11
 
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
-                        command.Parameters.AddWithValue("@id", 1); // Aquí puedes tomar el ID de un TextBox si quieres
+                        command.Parameters.AddWithValue("@id", txtProducto.Text); // Aquí puedes tomar el ID de un TextBox si quieres
 
                         SqlDataAdapter adapter = new SqlDataAdapter(command);
                         DataTable table = new DataTable();
@@ -67,7 +62,55 @@ namespace TP4_Grupo_11
 
                 }
             }
-            
+            if (valorSeleccionado == "2")
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    string query = "SELECT * FROM Productos WHERE IdProducto > @id";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@id", txtProducto.Text); // Aquí puedes tomar el ID de un TextBox si quieres
+
+                        SqlDataAdapter adapter = new SqlDataAdapter(command);
+                        DataTable table = new DataTable();
+                        adapter.Fill(table);
+
+                        // Aquí se hace el DataBind
+                        GVEj2.DataSource = table;
+                        GVEj2.DataBind();
+                    }
+                    connection.Close();
+
+                }
+            }
+            if (valorSeleccionado == "3")
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    string query = "SELECT * FROM Productos WHERE IdProducto < @id";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@id", txtProducto.Text); // Aquí puedes tomar el ID de un TextBox si quieres
+
+                        SqlDataAdapter adapter = new SqlDataAdapter(command);
+                        DataTable table = new DataTable();
+                        adapter.Fill(table);
+
+                        // Aquí se hace el DataBind
+                        GVEj2.DataSource = table;
+                        GVEj2.DataBind();
+                    }
+                    connection.Close();
+
+                }
+            }
+
         }
     }
 

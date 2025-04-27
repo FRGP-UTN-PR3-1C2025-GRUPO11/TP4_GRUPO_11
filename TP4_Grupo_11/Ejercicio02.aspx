@@ -12,7 +12,12 @@
     <form id="formularioEj02" runat="server">
         <div>
             <asp:Label ID="lblProducto" runat="server" Text="IdProducto: " style="text-transform: uppercase; font-size: large"></asp:Label>
-            <asp:DropDownList ID="ddlProducto" runat="server" style="margin-left: 7px"></asp:DropDownList>
+            <asp:DropDownList ID="ddlProducto" runat="server" style="margin-left: 7px">
+                <asp:ListItem Value="0">-- Seleccionar --</asp:ListItem>
+                <asp:ListItem Value="1">-- Igual a: --</asp:ListItem>
+                <asp:ListItem Value="2">-- Mayor a: --</asp:ListItem>
+                <asp:ListItem Value="3">-- Menor a: --</asp:ListItem>
+            </asp:DropDownList>
             <asp:TextBox ID="txtProducto" runat="server" style="margin-left: 15px" Width="101px"></asp:TextBox>
             <br />
             <br />
