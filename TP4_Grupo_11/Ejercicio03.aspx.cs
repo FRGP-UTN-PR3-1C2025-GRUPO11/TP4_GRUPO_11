@@ -46,13 +46,13 @@ namespace TP4_Grupo_11
             switch (ddlTemas.SelectedIndex)
             {
                 case 0:
-                    lbTemas.Text = "Ver Tema 1";
+                    btnVerLibros.Text = "Ver Tema 1";
                     break;
                 case 1:
-                    lbTemas.Text = "Ver Tema 2";
+                    btnVerLibros.Text = "Ver Tema 2";
                     break;
                 case 2:
-                    lbTemas.Text = "Ver Tema 3";
+                    btnVerLibros.Text = "Ver Tema 3";
                     break;
 
             }
