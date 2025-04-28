@@ -30,14 +30,12 @@ namespace TP4_Grupo_11
 
                 connection.Close();
             }
-
-            
-
         }
 
-        protected void lbTemas_Click(object sender, EventArgs e)
+        protected void btnVerLibros_Click(object sender, EventArgs e)
         {
-            Server.Transfer("Ejercicio03b.aspx");
+            string idTema = ddlTemas.SelectedValue;
+            Response.Redirect("Ejercicio03b.aspx?id=" + idTema);
         }
     }
 }
