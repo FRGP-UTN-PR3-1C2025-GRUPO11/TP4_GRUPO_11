@@ -51,6 +51,15 @@ namespace TP4_Grupo_11
         protected global::System.Web.UI.WebControls.TextBox txtProducto;
 
         /// <summary>
+        /// Control revIdProducto.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator revIdProducto;
+
+        /// <summary>
         /// Control lblCategoria.
         /// </summary>
         /// <remarks>
@@ -76,6 +85,15 @@ namespace TP4_Grupo_11
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtCategoria;
+
+        /// <summary>
+        /// Control revIdCategoria.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator revIdCategoria;
 
         /// <summary>
         /// Control btnFiltrar.

@@ -15,10 +15,10 @@ namespace TP4_Grupo_11
     public partial class Ejercicio02 : System.Web.UI.Page
     {
 
-
         private const string cadenaConexion = @"Data Source=localhost\SQLEXPRESS;Initial Catalog=Neptuno;Integrated Security=True;TrustServerCertificate=True";
         protected void Page_Load(object sender, EventArgs e)
         {
+            ValidationSettings.UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
             if (!IsPostBack)
             {
                 SqlConnection connection = new SqlConnection(cadenaConexion);
@@ -37,8 +37,6 @@ namespace TP4_Grupo_11
 
         protected void btnFiltrar_Click(object sender, EventArgs e)
         {
-            string connectionString = "Data Source=localhost\\SQLEXPRESS;Initial Catalog=Neptuno;Integrated Security=True;TrustServerCertificate=True";
-
             string valorProducto = ddlProducto.SelectedValue;
             string valorCategoria = ddlCategoria.SelectedValue;
 
@@ -95,7 +93,7 @@ namespace TP4_Grupo_11
 
             command.CommandText = query;
 
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(cadenaConexion))
             {
                 connection.Open();
                 command.Connection = connection;
@@ -125,8 +123,8 @@ namespace TP4_Grupo_11
 
             txtProducto.Text = "";
             txtCategoria.Text = "";
-            ddlProducto.SelectedIndex = 0;
-            ddlCategoria.SelectedIndex = 0;
+            ddlProducto.SelectedIndex = 1;
+            ddlCategoria.SelectedIndex = 1;
         }
     }
 }

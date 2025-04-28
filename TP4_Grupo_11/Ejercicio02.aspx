@@ -12,8 +12,8 @@
     <style>
         .filtro {
             display: inline-grid;
-            width: 500px;
-            grid-template-columns: 100px 100px 300px;
+            width: 700px;
+            grid-template-columns: 100px 100px 300px 200px;
             gap: 15px;
         }
         .botones {
@@ -24,9 +24,14 @@
             width: 600px;
             margin: 30px 30px;
         }
+        .validador {
+            color: red;
+            font-weight: bolder;
+        }
     </style>
     <form id="formularioEj02" runat="server">
         <div class="filtro">
+
             <asp:Label ID="lblProducto" runat="server" Text="IdProducto: "></asp:Label>
             <asp:DropDownList ID="ddlProducto" runat="server">
                 <asp:ListItem Value="1">-- Igual a: --</asp:ListItem>
@@ -34,14 +39,16 @@
                 <asp:ListItem Value="3">-- Menor a: --</asp:ListItem>
             </asp:DropDownList>
             <asp:TextBox ID="txtProducto" runat="server"></asp:TextBox>
+            <asp:RegularExpressionValidator ID="revIdProducto" runat="server" ErrorMessage="Debe ser un valor numérico" ValidationExpression="^[0-9,$]*$" ControlToValidate="txtProducto" CssClass="validador"></asp:RegularExpressionValidator>
             
-            <asp:Label ID="lblCategoria" runat="server" Text="Categoria: "></asp:Label>
+            <asp:Label ID="lblCategoria" runat="server" Text="IdCategoria: "></asp:Label>
             <asp:DropDownList ID="ddlCategoria" runat="server">
                <asp:ListItem Value="1">-- Igual a: --</asp:ListItem>
                <asp:ListItem Value="2">-- Mayor a: --</asp:ListItem>
                <asp:ListItem Value="3">-- Menor a: --</asp:ListItem>
             </asp:DropDownList>
             <asp:TextBox ID="txtCategoria" runat="server"></asp:TextBox>
+            <asp:RegularExpressionValidator ID="revIdCategoria" runat="server" ErrorMessage="Debe ser un valor numérico" ValidationExpression="^[0-9,$]*$" ControlToValidate="txtCategoria" CssClass="validador"></asp:RegularExpressionValidator>
             
         </div>
         <div class="botones">
