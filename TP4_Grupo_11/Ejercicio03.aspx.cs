@@ -31,13 +31,30 @@ namespace TP4_Grupo_11
                 connection.Close();
             }
 
-            
+
 
         }
 
         protected void lbTemas_Click(object sender, EventArgs e)
         {
             Server.Transfer("Ejercicio03b.aspx");
+        }
+
+        protected void ddlTemas_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (ddlTemas.SelectedIndex)
+            {
+                case 0:
+                    lbTemas.Text = "Ver Tema 1";
+                    break;
+                case 1:
+                    lbTemas.Text = "Ver Tema 2";
+                    break;
+                case 2:
+                    lbTemas.Text = "Ver Tema 3";
+                    break;
+
+            }
         }
     }
 }

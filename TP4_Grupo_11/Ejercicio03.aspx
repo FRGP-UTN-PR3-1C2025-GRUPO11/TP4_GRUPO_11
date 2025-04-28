@@ -19,7 +19,7 @@
             <br />
             <asp:Label ID="Label1" runat="server" Text="Selecionar Tema:"></asp:Label>
 &nbsp;
-            <asp:DropDownList ID="ddlTemas" runat="server">
+            <asp:DropDownList ID="ddlTemas" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlTemas_SelectedIndexChanged">
             </asp:DropDownList>
 
             <asp:LinkButton ID="lbTemas" runat="server" PostBackUrl="~/Ejercicio03b.aspx" OnClick="lbTemas_Click">Ver Temas</asp:LinkButton>
