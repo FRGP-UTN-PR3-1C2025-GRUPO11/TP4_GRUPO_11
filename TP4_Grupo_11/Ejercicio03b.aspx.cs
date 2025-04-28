@@ -22,6 +22,8 @@ namespace TP4_Grupo_11
                 {
                     CargarLibros(int.Parse(idTema));
                 }
+
+                lblTema.Text = "Tema " + idTema;
             }
         }
 

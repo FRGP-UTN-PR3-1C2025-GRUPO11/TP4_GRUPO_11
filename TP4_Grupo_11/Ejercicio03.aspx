@@ -22,10 +22,12 @@
             <br />
             <asp:Label ID="Label1" runat="server" Text="Selecionar Tema:"></asp:Label>
 &nbsp;
-            <asp:DropDownList ID="ddlTemas" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlTemas_SelectedIndexChanged">
+            <asp:DropDownList ID="ddlTemas" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlTemas_SelectedIndexChanged" ValidationGroup="Grupo1">
             </asp:DropDownList>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <asp:RequiredFieldValidator ID="rfvTema" runat="server" ControlToValidate="ddlTemas" InitialValue="0" ValidationGroup="Grupo1">Debe seleccionar un tema</asp:RequiredFieldValidator>
         </div>
-            <asp:Button ID="btnVerLibros" runat="server" Text="Ver libros" OnClick="btnVerLibros_Click" />
+            <asp:Button ID="btnVerLibros" runat="server" Text="Ver libros" OnClick="btnVerLibros_Click" ValidationGroup="Grupo1" />
     </form>
 </body>
 </html>
