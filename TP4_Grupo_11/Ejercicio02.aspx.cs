@@ -8,6 +8,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace TP4_Grupo_11
 {
@@ -15,7 +16,7 @@ namespace TP4_Grupo_11
     {
 
 
-        private const string cadenaConexion = "Data Source=Nico-Laptop\\SQLEXPRESS;Initial Catalog=Neptuno;Integrated Security=True;TrustServerCertificate=True";
+        private const string cadenaConexion = @"Data Source=localhost\SQLEXPRESS;Initial Catalog=Neptuno;Integrated Security=True;TrustServerCertificate=True";
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -36,13 +37,13 @@ namespace TP4_Grupo_11
 
         protected void btnFiltrar_Click(object sender, EventArgs e)
         {
-            string connectionString = "Data Source=Nico-Laptop\\SQLEXPRESS;Initial Catalog=Neptuno;Integrated Security=True;TrustServerCertificate=True";
+            string connectionString = "Data Source=localhost\\SQLEXPRESS;Initial Catalog=Neptuno;Integrated Security=True;TrustServerCertificate=True";
 
             string valorProducto = ddlProducto.SelectedValue;
-            string valorCategoria = ddlCantegoria.SelectedValue;
+            string valorCategoria = ddlCategoria.SelectedValue;
 
             string idProducto = txtProducto.Text.Trim();
-            string idCategoria = txtCantegoria.Text.Trim();
+            string idCategoria = txtCategoria.Text.Trim();
 
             List<string> condiciones = new List<string>();
             SqlCommand command = new SqlCommand();
@@ -123,9 +124,9 @@ namespace TP4_Grupo_11
             sqlConnection.Close();
 
             txtProducto.Text = "";
-            txtCantegoria.Text = "";
+            txtCategoria.Text = "";
             ddlProducto.SelectedIndex = 0;
-            ddlCantegoria.SelectedIndex = 0;
+            ddlCategoria.SelectedIndex = 0;
         }
     }
 }

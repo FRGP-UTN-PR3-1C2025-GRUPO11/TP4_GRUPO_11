@@ -28,8 +28,6 @@ namespace TP4_Grupo_11
             }
         }
 
-
-
         public void cargarProvinciaInicio()
             // es la carga inicial. luego con un evento en otra funcion decimos que hacemos con cada cambio. aca es solo el inicio
         {

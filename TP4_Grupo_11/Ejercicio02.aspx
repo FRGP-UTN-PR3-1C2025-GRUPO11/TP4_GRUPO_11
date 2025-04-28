@@ -9,27 +9,42 @@
 </head>
  
 <body>
+    <style>
+        .filtro {
+            display: inline-grid;
+            width: 500px;
+            grid-template-columns: 100px 100px 300px;
+            gap: 15px;
+        }
+        .botones {
+            display: flex;
+            gap: 15px;
+            flex-direction: row;
+            justify-content: center;
+            width: 600px;
+            margin: 30px 30px;
+        }
+    </style>
     <form id="formularioEj02" runat="server">
-        <div>
-            <asp:Label ID="lblProducto" runat="server" Text="IdProducto: " style="text-transform: uppercase; font-size: large"></asp:Label>
-            <asp:DropDownList ID="ddlProducto" runat="server" style="margin-left: 7px">
-                <asp:ListItem Value="0">-- Seleccionar --</asp:ListItem>
+        <div class="filtro">
+            <asp:Label ID="lblProducto" runat="server" Text="IdProducto: "></asp:Label>
+            <asp:DropDownList ID="ddlProducto" runat="server">
                 <asp:ListItem Value="1">-- Igual a: --</asp:ListItem>
                 <asp:ListItem Value="2">-- Mayor a: --</asp:ListItem>
                 <asp:ListItem Value="3">-- Menor a: --</asp:ListItem>
             </asp:DropDownList>
-            <asp:TextBox ID="txtProducto" runat="server" style="margin-left: 15px" Width="101px"></asp:TextBox>
-            <br />
-            <asp:Label ID="lblCantegoria" runat="server" Text="Categoria: " style="text-transform: uppercase; font-size: large"></asp:Label>
-            <asp:DropDownList ID="ddlCantegoria" runat="server" Height="16px" style="margin-left: 15px" Width="108px">
-               <asp:ListItem Value="0">-- Seleccionar --</asp:ListItem>
+            <asp:TextBox ID="txtProducto" runat="server"></asp:TextBox>
+            
+            <asp:Label ID="lblCategoria" runat="server" Text="Categoria: "></asp:Label>
+            <asp:DropDownList ID="ddlCategoria" runat="server">
                <asp:ListItem Value="1">-- Igual a: --</asp:ListItem>
                <asp:ListItem Value="2">-- Mayor a: --</asp:ListItem>
                <asp:ListItem Value="3">-- Menor a: --</asp:ListItem>
             </asp:DropDownList>
-            <asp:TextBox ID="txtCantegoria" runat="server" style="margin-left: 15px" Width="101px"></asp:TextBox>
-            <br />
-
+            <asp:TextBox ID="txtCategoria" runat="server"></asp:TextBox>
+            
+        </div>
+        <div class="botones">
             <asp:Button ID="btnFiltrar" runat="server" OnClick="btnFiltrar_Click" Text="Filtrar" />
             <asp:Button ID="btnQuitarFiltro" runat="server" Text="Quitar Filtro" OnClick="btnBorrarFiltro"/>
         </div>
