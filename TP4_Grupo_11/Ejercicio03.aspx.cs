@@ -11,7 +11,7 @@ namespace TP4_Grupo_11
 {
     public partial class Ejercicio03 : System.Web.UI.Page
     {
-        private const string cadenaConexion = "Data Source=DESKTOP-6LDIHKB\\SQLEXPRESS;Initial Catalog = Libreria; Integrated Security = True;TrustServerCertificate=True";
+        private const string cadenaConexion = @"Data Source=localhost\SQLEXPRESS;Initial Catalog = Libreria; Integrated Security = True;TrustServerCertificate=True";
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -25,12 +25,19 @@ namespace TP4_Grupo_11
 
                 ddlTemas.DataSource = sqlDatareader;
                 ddlTemas.DataTextField = "Tema";
-               ddlTemas.DataValueField = "IdTema";
-               ddlTemas.DataBind();
+                ddlTemas.DataValueField = "IdTema";
+                ddlTemas.DataBind();
 
                 connection.Close();
             }
 
+            
+
+        }
+
+        protected void lbTemas_Click(object sender, EventArgs e)
+        {
+            Server.Transfer("Ejercicio03b.aspx");
         }
     }
 }

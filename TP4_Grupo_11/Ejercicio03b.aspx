@@ -8,8 +8,22 @@
     <title></title>
 </head>
 <body>
+    <style>
+        .tabla {
+            margin: 30px 30px;
+        }
+
+    </style>
     <form id="form1" runat="server">
         <div>
+            <asp:Label ID="Label1" runat="server" Text="Listado de libros"></asp:Label>
+            <div class="tabla">
+                [tabla]
+                <!--
+                    TODO: ACA VA LA TABLA CON EL LISTADO DE LIBROS S/TEMA 
+                    -->
+            </div>
+            <asp:LinkButton ID="lbVolver" runat="server" PostBackUrl="~/Ejercicio03.aspx">Consultar otro tema</asp:LinkButton>
         </div>
     </form>
 </body>

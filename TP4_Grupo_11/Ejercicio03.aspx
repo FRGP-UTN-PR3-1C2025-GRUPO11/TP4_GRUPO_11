@@ -8,6 +8,12 @@
     <title></title>
 </head>
 <body>
+    <style>
+        a {
+            display: block;
+            margin-top: 20px;
+        }
+    </style>
     <form id="form1" runat="server">
         <div>
             <br />
@@ -15,10 +21,8 @@
 &nbsp;
             <asp:DropDownList ID="ddlTemas" runat="server">
             </asp:DropDownList>
-            <br />
-            <br />
-            <br />
-            <asp:LinkButton ID="lbTemas" runat="server">Ver Temas</asp:LinkButton>
+
+            <asp:LinkButton ID="lbTemas" runat="server" PostBackUrl="~/Ejercicio03b.aspx" OnClick="lbTemas_Click">Ver Temas</asp:LinkButton>
         </div>
     </form>
 </body>

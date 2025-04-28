@@ -39,7 +39,7 @@
                 <asp:ListItem Value="3">-- Menor a: --</asp:ListItem>
             </asp:DropDownList>
             <asp:TextBox ID="txtProducto" runat="server"></asp:TextBox>
-            <asp:RegularExpressionValidator ID="revIdProducto" runat="server" ErrorMessage="Debe ser un valor numérico" ValidationExpression="^[0-9,$]*$" ControlToValidate="txtProducto" CssClass="validador"></asp:RegularExpressionValidator>
+            <asp:RegularExpressionValidator ID="revIdProducto" runat="server" ErrorMessage="Debe ser un valor numérico" ValidationExpression="^[0-9]*$" ControlToValidate="txtProducto" CssClass="validador"></asp:RegularExpressionValidator>
             
             <asp:Label ID="lblCategoria" runat="server" Text="IdCategoria: "></asp:Label>
             <asp:DropDownList ID="ddlCategoria" runat="server">
@@ -48,7 +48,7 @@
                <asp:ListItem Value="3">-- Menor a: --</asp:ListItem>
             </asp:DropDownList>
             <asp:TextBox ID="txtCategoria" runat="server"></asp:TextBox>
-            <asp:RegularExpressionValidator ID="revIdCategoria" runat="server" ErrorMessage="Debe ser un valor numérico" ValidationExpression="^[0-9,$]*$" ControlToValidate="txtCategoria" CssClass="validador"></asp:RegularExpressionValidator>
+            <asp:RegularExpressionValidator ID="revIdCategoria" runat="server" ErrorMessage="Debe ser un valor numérico" ValidationExpression="^[0-9]*$" ControlToValidate="txtCategoria" CssClass="validador"></asp:RegularExpressionValidator>
             
         </div>
         <div class="botones">
