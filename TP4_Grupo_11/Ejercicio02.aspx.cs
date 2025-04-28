@@ -123,8 +123,8 @@ namespace TP4_Grupo_11
 
             txtProducto.Text = "";
             txtCategoria.Text = "";
-            ddlProducto.SelectedIndex = 1;
-            ddlCategoria.SelectedIndex = 1;
+            ddlProducto.SelectedIndex = 0;
+            ddlCategoria.SelectedIndex = 0;
         }
     }
 }
