@@ -13,17 +13,19 @@
             display: block;
             margin-top: 20px;
         }
+        div {
+            padding-bottom: 20px;
+        }
     </style>
-    <form id="form1" runat="server">
+    <form id="formularioEj3" runat="server">
         <div>
             <br />
             <asp:Label ID="Label1" runat="server" Text="Selecionar Tema:"></asp:Label>
 &nbsp;
             <asp:DropDownList ID="ddlTemas" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlTemas_SelectedIndexChanged">
             </asp:DropDownList>
-
-            <asp:LinkButton ID="lbTemas" runat="server" PostBackUrl="~/Ejercicio03b.aspx" OnClick="lbTemas_Click">Ver Temas</asp:LinkButton>
         </div>
+            <asp:Button ID="btnVerLibros" runat="server" Text="Ver libros" OnClick="btnVerLibros_Click" />
     </form>
 </body>
 </html>

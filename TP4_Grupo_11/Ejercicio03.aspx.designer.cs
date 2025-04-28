@@ -15,13 +15,13 @@ namespace TP4_Grupo_11
     {
 
         /// <summary>
-        /// Control form1.
+        /// Control formularioEj3.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::System.Web.UI.HtmlControls.HtmlForm formularioEj3;
 
         /// <summary>
         /// Control Label1.
@@ -42,12 +42,12 @@ namespace TP4_Grupo_11
         protected global::System.Web.UI.WebControls.DropDownList ddlTemas;
 
         /// <summary>
-        /// Control lbTemas.
+        /// Control btnVerLibros.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lbTemas;
+        protected global::System.Web.UI.WebControls.Button btnVerLibros;
     }
 }
