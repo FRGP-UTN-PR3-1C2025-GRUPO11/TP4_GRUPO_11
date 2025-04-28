@@ -15,7 +15,7 @@ namespace TP4_Grupo_11
     {
 
 
-        private const string cadenaConexion = "Data Source=DESKTOP-6LDIHKB\\SQLEXPRESS;Initial Catalog=Neptuno;Integrated Security=True;TrustServerCertificate=True";
+        private const string cadenaConexion = "Data Source=Nico-Laptop\\SQLEXPRESS;Initial Catalog=Neptuno;Integrated Security=True;TrustServerCertificate=True";
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -36,177 +36,96 @@ namespace TP4_Grupo_11
 
         protected void btnFiltrar_Click(object sender, EventArgs e)
         {
-            string connectionString = "Data Source=DESKTOP-6LDIHKB\\SQLEXPRESS;Initial Catalog=Neptuno;Integrated Security=True;TrustServerCertificate=True";
-            string valorSeleccionado = ddlProducto.SelectedValue;
-            string categoriaSelec = ddlCantegoria.SelectedValue;
+            string connectionString = "Data Source=Nico-Laptop\\SQLEXPRESS;Initial Catalog=Neptuno;Integrated Security=True;TrustServerCertificate=True";
 
+            string valorProducto = ddlProducto.SelectedValue;
+            string valorCategoria = ddlCantegoria.SelectedValue;
 
-            if (string.IsNullOrWhiteSpace(txtProducto.Text) && string.IsNullOrWhiteSpace(txtCantegoria.Text))
+            string idProducto = txtProducto.Text.Trim();
+            string idCategoria = txtCantegoria.Text.Trim();
+
+            List<string> condiciones = new List<string>();
+            SqlCommand command = new SqlCommand();
+
+            if (!string.IsNullOrWhiteSpace(idProducto))
             {
-                SqlConnection connection = new SqlConnection(cadenaConexion);
-                connection.Open();
-
-                SqlCommand sqlCommand = new SqlCommand("SELECT IdProducto,NombreProducto,IdProveedor,IdCategoría,CantidadPorUnidad,PrecioUnidad FROM Productos", connection);
-                SqlDataReader reader = sqlCommand.ExecuteReader();
-
-                GVEj2.DataSource = reader;
-                GVEj2.DataBind();
-
-                connection.Close();
-
-
-
+                switch (valorProducto)
+                {
+                    case "1":
+                        condiciones.Add("IdProducto = @idProducto");
+                        command.Parameters.AddWithValue("@idProducto", idProducto);
+                        break;
+                    case "2":
+                        condiciones.Add("IdProducto > @idProducto");
+                        command.Parameters.AddWithValue("@idProducto", idProducto);
+                        break;
+                    case "3":
+                        condiciones.Add("IdProducto < @idProducto");
+                        command.Parameters.AddWithValue("@idProducto", idProducto);
+                        break;
+                }
             }
-            else
+
+            if (!string.IsNullOrWhiteSpace(idCategoria))
             {
-                if (valorSeleccionado == "1")
+                switch (valorCategoria)
                 {
-                    using (SqlConnection connection = new SqlConnection(connectionString))
-                    {
-                        connection.Open();
-
-                        string query = "SELECT IdProducto,NombreProducto,IdProveedor,IdCategoría,CantidadPorUnidad,PrecioUnidad FROM Productos WHERE IdProducto = @id";
-
-                        using (SqlCommand command = new SqlCommand(query, connection))
-                        {
-                            command.Parameters.AddWithValue("@id", txtProducto.Text); // Aquí puedes tomar el ID de un TextBox si quieres
-
-                            SqlDataAdapter adapter = new SqlDataAdapter(command);
-                            DataTable table = new DataTable();
-                            adapter.Fill(table);
-
-                            // Aquí se hace el DataBind
-                            GVEj2.DataSource = table;
-                            GVEj2.DataBind();
-                        }
-                        connection.Close();
-
-                    }
+                    case "1":
+                        condiciones.Add("IdCategoría = @idCategoria");
+                        command.Parameters.AddWithValue("@idCategoria", idCategoria);
+                        break;
+                    case "2":
+                        condiciones.Add("IdCategoría > @idCategoria");
+                        command.Parameters.AddWithValue("@idCategoria", idCategoria);
+                        break;
+                    case "3":
+                        condiciones.Add("IdCategoría < @idCategoria");
+                        command.Parameters.AddWithValue("@idCategoria", idCategoria);
+                        break;
                 }
-                if (valorSeleccionado == "2")
-                {
-                    using (SqlConnection connection = new SqlConnection(connectionString))
-                    {
-                        connection.Open();
+            }
 
-                        string query = "SELECT IdProducto,NombreProducto,IdProveedor,IdCategoría,CantidadPorUnidad,PrecioUnidad FROM Productos WHERE IdProducto > @id";
+            string query = "SELECT IdProducto, NombreProducto, IdProveedor, IdCategoría, CantidadPorUnidad, PrecioUnidad FROM Productos";
 
-                        using (SqlCommand command = new SqlCommand(query, connection))
-                        {
-                            command.Parameters.AddWithValue("@id", txtProducto.Text); // Aquí puedes tomar el ID de un TextBox si quieres
+            if (condiciones.Count > 0)
+            {
+                query += " WHERE " + string.Join(" AND ", condiciones);
+            }
 
-                            SqlDataAdapter adapter = new SqlDataAdapter(command);
-                            DataTable table = new DataTable();
-                            adapter.Fill(table);
+            command.CommandText = query;
 
-                            // Aquí se hace el DataBind
-                            GVEj2.DataSource = table;
-                            GVEj2.DataBind();
-                        }
-                        connection.Close();
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                command.Connection = connection;
 
-                    }
-                }
-                if (valorSeleccionado == "3")
-                {
-                    using (SqlConnection connection = new SqlConnection(connectionString))
-                    {
-                        connection.Open();
+                SqlDataAdapter adapter = new SqlDataAdapter(command);
+                DataTable table = new DataTable();
+                adapter.Fill(table);
 
-                        string query = "SELECT IdProducto,NombreProducto,IdProveedor,IdCategoría,CantidadPorUnidad,PrecioUnidad FROM Productos WHERE IdProducto < @id";
-
-                        using (SqlCommand command = new SqlCommand(query, connection))
-                        {
-                            command.Parameters.AddWithValue("@id", txtProducto.Text); // Aquí puedes tomar el ID de un TextBox si quieres
-
-                            SqlDataAdapter adapter = new SqlDataAdapter(command);
-                            DataTable table = new DataTable();
-                            adapter.Fill(table);
-
-                            // Aquí se hace el DataBind
-                            GVEj2.DataSource = table;
-                            GVEj2.DataBind();
-                        }
-                        connection.Close();
-
-                    }
-                }
-                if (categoriaSelec == "1")
-                {
-                    using (SqlConnection connection = new SqlConnection(connectionString))
-                    {
-                        connection.Open();
-
-                        string query = "SELECT IdProducto,NombreProducto,IdProveedor,IdCategoría,CantidadPorUnidad,PrecioUnidad FROM productos WHERE IdCategoría = @id";
-
-                        using (SqlCommand command = new SqlCommand(query, connection))
-                        {
-                            command.Parameters.AddWithValue("@id", txtCantegoria.Text); // Aquí puedes tomar el ID de un TextBox si quieres
-
-                            SqlDataAdapter adapter = new SqlDataAdapter(command);
-                            DataTable table = new DataTable();
-                            adapter.Fill(table);
-
-                            // Aquí se hace el DataBind
-                            GVEj2.DataSource = table;
-                            GVEj2.DataBind();
-                        }
-                        connection.Close();
-
-                    }
-                }
-                if (categoriaSelec == "2")
-                {
-                    using (SqlConnection connection = new SqlConnection(connectionString))
-                    {
-                        connection.Open();
-
-                        string query = "SELECT IdProducto,NombreProducto,IdProveedor,IdCategoría,CantidadPorUnidad,PrecioUnidad FROM Productos WHERE IdCategoría > @id";
-
-                        using (SqlCommand command = new SqlCommand(query, connection))
-                        {
-                            command.Parameters.AddWithValue("@id", txtCantegoria.Text); // Aquí puedes tomar el ID de un TextBox si quieres
-
-                            SqlDataAdapter adapter = new SqlDataAdapter(command);
-                            DataTable table = new DataTable();
-                            adapter.Fill(table);
-
-                            // Aquí se hace el DataBind
-                            GVEj2.DataSource = table;
-                            GVEj2.DataBind();
-                        }
-                        connection.Close();
-
-                    }
-                }
-                if (categoriaSelec == "3")
-                {
-                    using (SqlConnection connection = new SqlConnection(connectionString))
-                    {
-                        connection.Open();
-
-                        string query = "SELECT IdProducto,NombreProducto,IdProveedor,IdCategoría,CantidadPorUnidad,PrecioUnidad FROM Productos WHERE IdCategoría < @id";
-
-                        using (SqlCommand command = new SqlCommand(query, connection))
-                        {
-                            command.Parameters.AddWithValue("@id", txtCantegoria.Text); // Aquí puedes tomar el ID de un TextBox si quieres
-
-                            SqlDataAdapter adapter = new SqlDataAdapter(command);
-                            DataTable table = new DataTable();
-                            adapter.Fill(table);
-
-                            // Aquí se hace el DataBind
-                            GVEj2.DataSource = table;
-                            GVEj2.DataBind();
-                        }
-                        connection.Close();
-
-                    }
-                }
-
+                GVEj2.DataSource = table;
+                GVEj2.DataBind();
             }
         }
+
+
+        protected void btnBorrarFiltro(object sender, EventArgs e)
+        {
+            SqlConnection sqlConnection = new SqlConnection(cadenaConexion);
+            sqlConnection.Open();
+
+            SqlCommand sqlCommand = new SqlCommand("SELECT IdProducto,NombreProducto,IdProveedor,IdCategoría,CantidadPorUnidad,PrecioUnidad FROM Productos", sqlConnection);
+            SqlDataReader reader = sqlCommand.ExecuteReader();
+
+            GVEj2.DataSource = reader; 
+            GVEj2.DataBind();
+
+            sqlConnection.Close();
+
+            txtProducto.Text = "";
+            txtCantegoria.Text = "";
+            ddlProducto.SelectedIndex = 0;
+            ddlCantegoria.SelectedIndex = 0;
+        }
     }
-
-
 }
