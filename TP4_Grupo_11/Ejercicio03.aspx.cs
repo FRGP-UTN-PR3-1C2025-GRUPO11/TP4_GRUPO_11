@@ -12,7 +12,7 @@ namespace TP4_Grupo_11
 {
     public partial class Ejercicio03 : System.Web.UI.Page
     {
-        private const string cadenaConexion = @"Data Source=DESKTOP-6LDIHKB\SQLEXPRESS;Initial Catalog = Libreria; Integrated Security = True;TrustServerCertificate=True";
+        private const string cadenaConexion = @"Data Source=localhost\SQLEXPRESS;Initial Catalog = Libreria; Integrated Security = True;TrustServerCertificate=True";
         protected void Page_Load(object sender, EventArgs e)
         {
             Page.UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
